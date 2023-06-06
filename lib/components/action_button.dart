@@ -8,16 +8,22 @@ class ActionButton extends StatelessWidget {
       {super.key,
       required this.icon,
       required this.alignment,
-      required this.actionCallback});
+      required this.actionCallback,
+      required this.onHoldStartCallback,
+      required this.onHoldEndCallback});
 
   final IconData icon;
   final Alignment alignment;
   final Function actionCallback;
+  final Function onHoldStartCallback;
+  final Function onHoldEndCallback;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => actionCallback(),
+      onTapDown: (value) => onHoldStartCallback(),
+      onTapUp: (value) => onHoldEndCallback(),
       child: Ink(
           color: Provider.of<ThemeToggle>(context).isDarkTheme
               ? Colors.grey.shade800
