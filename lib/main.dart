@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'package:provider/provider.dart';
-import 'models/player_data.dart';
+import 'provider/player_data.dart';
+import 'provider/theme_toggle.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,16 +13,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: SafeArea(
-        child: ChangeNotifierProvider(
-          create: (context) => PlayerData(),
-          child: const Scaffold(
-            body: HomeScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => ThemeToggle(),
+      builder: (context, child) {
+        return MaterialApp(
+          theme: Provider.of<ThemeToggle>(context).isDarkTheme
+              ? ThemeData.dark()
+              : ThemeData.light(),
+          home: SafeArea(
+            child: ChangeNotifierProvider(
+              create: (context) => PlayerData(),
+              child: const Scaffold(
+                body: HomeScreen(),
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:magic_lifecounter/components/player_display.dart';
 import 'package:provider/provider.dart';
-import 'package:magic_lifecounter/models/player_data.dart';
+import 'package:magic_lifecounter/provider/player_data.dart';
+import 'package:magic_lifecounter/provider/theme_toggle.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,9 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PlayerData>(
-      builder: (context, value, child) {
-        PlayerData playerData = Provider.of<PlayerData>(context);
-
+      builder: (context, playerData, child) {
         return Column(
           children: [
             Expanded(
@@ -22,6 +21,9 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
+                color: Provider.of<ThemeToggle>(context).isDarkTheme
+                    ? Colors.grey.shade900
+                    : Colors.blueAccent.shade100,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -47,7 +49,14 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const Text('Theme'),
-                        Switch(value: false, onChanged: (value) {})
+                        Consumer<ThemeToggle>(builder: (context, theme, child) {
+                          return Switch(
+                              value: theme.isDarkTheme,
+                              activeColor: Colors.grey.shade300,
+                              onChanged: (value) {
+                                theme.toggleTheme();
+                              });
+                        })
                       ],
                     )
                   ],

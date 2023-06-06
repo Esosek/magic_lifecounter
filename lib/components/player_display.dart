@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magic_lifecounter/components/action_button.dart';
 import 'package:magic_lifecounter/models/player.dart';
-import 'package:magic_lifecounter/models/player_data.dart';
+import 'package:magic_lifecounter/provider/player_data.dart';
 import 'package:provider/provider.dart';
 
 class PlayerDisplay extends StatelessWidget {

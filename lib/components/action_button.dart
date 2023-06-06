@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magic_lifecounter/const.dart';
+import 'package:provider/provider.dart';
+import 'package:magic_lifecounter/provider/theme_toggle.dart';
 
 class ActionButton extends StatelessWidget {
   const ActionButton(
@@ -17,7 +19,9 @@ class ActionButton extends StatelessWidget {
     return InkWell(
       onTap: () => actionCallback(),
       child: Ink(
-          color: Colors.grey.shade800,
+          color: Provider.of<ThemeToggle>(context).isDarkTheme
+              ? Colors.grey.shade800
+              : Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 30),
           width: MediaQuery.of(context).size.width / 2,
           child: Align(
