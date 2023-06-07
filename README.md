@@ -1,9 +1,9 @@
-# magic_lifecounter
+# Magic Life
 
-Flutter with Provider
+Simple app for counting player's lives for **Magic: The Gathering** card game. App is made in Flutter with Provider state management.
 
-Simple app for counting player lives for Magic the gathering with the option of dark / light theme.
 
-Controls:
-  Tap to add / remove 1 life
-  Hold to continuously add or remove lives
+## Controls
+
+Tap +/- buttons to add or remove 1 life
+Hold +/- buttons to continuously add or remove lives
