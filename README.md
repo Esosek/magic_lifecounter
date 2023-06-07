@@ -2,6 +2,8 @@
 
 Simple app for counting player's lives for **Magic: The Gathering** card game. App is made in Flutter with Provider state management.
 
+Includes dark / light theme toggle
+
 
 ## Controls
 
