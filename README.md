@@ -1,3 +1,5 @@
 # magic_lifecounter
 
-A new Flutter project.
+Flutter
+
+Simple app for counting player lives for Magic the gathering with the option of dark / light theme.
